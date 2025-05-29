@@ -1,0 +1,231 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+/* Fullscreen styles */
+.fullscreen-active {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 !important;
+    overflow: hidden;
+}
+.fullscreen-active #videoContentWrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 !important;
+}
+.fullscreen-active video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    max-height: 100% !important;
+    max-width: 100% !important;
+}
+.fullscreen-active #videoContentWrapper > div {
+    width: 100% !important;
+    height: 100% !important;
+    padding-bottom: 0 !important;
+    max-height: 100% !important;
+    max-width: 100% !important;
+}
+.fullscreen-active iframe {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    max-width: 100% !important;
+}
+.custom-controls {
+    position: relative;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+}
+.fullscreen-active .custom-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 90%;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 0.75rem 1.5rem;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+#seekSlider {
+    flex-grow: 1;
+    height: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    margin: 0 0.5rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+#seekSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle at center, #a78bfa 0%, #8b5cf6 100%);
+    border-radius: 50%;
+    cursor: grab;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(255, 255, 255, 0.3);
+    margin-top: -5px;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+#seekSlider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+#seekSlider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle at center, #a78bfa 0%, #8b5cf6 100%);
+    border-radius: 50%;
+    cursor: grab;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(255, 255, 255, 0.3);
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+#seekSlider::-moz-range-thumb:active {
+    cursor: grabbing;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+#seekSlider::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, #8b5cf6 0%, #a78bfa var(--progress-fill, 0%), rgba(255, 255, 255, 0.1) var(--progress-fill, 0%));
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+#seekSlider::-moz-range-track {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border-radius: 4px;
+}
+#seekSlider::-moz-range-progress {
+    background: linear-gradient(to right, #8b5cf6 0%, #a78bfa 100%);
+    border-radius: 4px;
+}
+.volume-slider {
+    width: 80px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    outline: none;
+    border-radius: 2.5px;
+    cursor: pointer;
+}
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #a78bfa;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+.volume-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #a78bfa;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+/* Featured Video and Search Results */
+#featuredVideo {
+    min-height: 200px; /* Ensure visibility even if content fails */
+    position: relative;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+}
+#featuredVideo img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+#featuredVideo .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+}
+#featuredVideo button {
+    margin-top: 0.5rem;
+    background-color: #a78bfa;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease;
+}
+#featuredVideo button:hover {
+    background-color: #8b5cf6;
+}
+#searchResults {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+.search-result-item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.search-result-item:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.search-result-item img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+.search-result-item p {
+    color: white;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
